@@ -1,4 +1,4 @@
-import '../CSS/modeSelector.css'
+import './CSS/modeSelector.css'
 
 const ModeSelector = ({setMode}) => {
 

@@ -2,13 +2,12 @@ import './App.css';
 // import SearchBar from "./components/searchBar";
 import {useEffect, useState} from "react";
 // import getApiInfo from "./services/getApiInfo";
-import ExplanationCard from "./components/explanationCard";
-import ModeSelector from "./components/modeSelector";
+import ExplanationCard from "./VIEWS/explanationCard";
+import ModeSelector from "./VIEWS/modeSelector";
 
 function App() {
 
     //region EXPLANATION CARD
-    //////// CHANGE WHEN FINISH TO TRUE
     const [explanationToggle, setExplanationToggle] = useState(true)
 
 
@@ -48,13 +47,13 @@ function App() {
 
 
     //region SEARCHBAR ---------------
-    // const [searchValue, setSearchValue] = useState('');
-    //
-    // useEffect(()=>{
-    //
-    //     // console.log(searchValue);
-    //
-    // },[searchValue])
+    const [searchValue, setSearchValue] = useState('');
+
+    useEffect(()=>{
+
+        console.log(searchValue);
+
+    },[searchValue])
     //endregion searchbar
 
 
