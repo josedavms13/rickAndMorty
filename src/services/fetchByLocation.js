@@ -23,8 +23,6 @@ function fetchByLocation(input) {
 
 
         console.log('has dimension')
-        console.log(location);
-        console.log(dimension);
 
         url += `name=${location}&dimension=${dimension}`
 
@@ -39,14 +37,12 @@ function fetchByLocation(input) {
 
         const location = input.trim();
         console.log('hasnot dimension');
-        console.log(location);
 
 
         url += `name=${location}`;
 
         const searchByLocationResults =fetch(url)
             .then(response=>response.json())
-
 
         return searchByLocationResults
     }

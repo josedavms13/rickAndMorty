@@ -1,6 +1,6 @@
 import SearchBar from "../components/searchBar";
 import {useEffect, useState} from "react";
-import './CSS/SearchCard.css'
+import './ViewCSS/SearchCard.css'
 
 const SearchCard = ({mode, SearchButtonHandle})=>{
 

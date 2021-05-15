@@ -1,3 +1,5 @@
+import './componentsCSS/searchBar.css'
+
 import {useState} from "react";
 
 

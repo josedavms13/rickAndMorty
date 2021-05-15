@@ -1,4 +1,4 @@
-import './CSS/explanationCard.css'
+import './ViewCSS/explanationCard.css'
 
 const ExplanationCard = ({continueBtn})=>{
 
