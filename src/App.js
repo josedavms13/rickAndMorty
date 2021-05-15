@@ -62,15 +62,16 @@ function App() {
     const [searchCardToggle, SetSearchCardToggle] = useState(false);
 
 
-    const [searchValue, setSearchValue] = useState('');
+    const [searchValue, SetSearchValue] = useState(null);
 
 
     //Got search query from search card
     useEffect(()=>{
+        if(searchValue) {
+            console.log(searchValue);
+        }
 
-        console.log(searchValue);
-
-    },[searchValue])
+    },[searchValue, searchCardToggle])
 
     //endregion search card
 
@@ -88,7 +89,7 @@ function App() {
             SetModeSelected(mode)
         }}/>}
 
-        {searchCardToggle&&<SearchCard mode={modeSelected}/>}
+        {searchCardToggle&&<SearchCard mode={modeSelected} SearchButtonHandle={(searchedValue)=>{SetSearchValue(searchedValue)}}/>}
 
     </div>
   );

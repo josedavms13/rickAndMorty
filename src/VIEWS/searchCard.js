@@ -2,31 +2,22 @@ import SearchBar from "../components/searchBar";
 import {useEffect, useState} from "react";
 import './CSS/SearchCard.css'
 
-const SearchCard = ({mode})=>{
+const SearchCard = ({mode, SearchButtonHandle})=>{
 
-    const [image, SetImage] = useState(null)
     const [modeText, SetModeText] = useState(null)
 
     useEffect(()=>{
         console.log(mode);
         if(mode === 'search-by-name'){
-            SetImage('../Media/rick-and-morty-characters.jpg')
             SetModeText('name')
         }
 
         if(mode === 'search-by-location'){
-            SetImage('../Media/rick-and-morty-locations.jpeg')
             SetModeText('location')
 
         }
 
-
-
     },[mode])
-
-
-
-
 
 
 
@@ -38,7 +29,7 @@ const SearchCard = ({mode})=>{
 
                 <h2>Make your search here!</h2>
                 <h4>Searching by {modeText}</h4>
-                <SearchBar />
+                <SearchBar SearchButtonHandle={SearchButtonHandle}/>
                 <button>Cancel</button>
             </div>
 

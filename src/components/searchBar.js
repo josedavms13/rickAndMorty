@@ -7,7 +7,7 @@ const SearchBar = ({SearchButtonHandle})=>{
 
 
     function setOrResetInputValues(){
-        SearchButtonHandle(searchBarValue)
+        SearchButtonHandle(searchBarValue.toLowerCase())
         setSearchBarValue('');
     }
 
