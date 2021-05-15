@@ -1,0 +1,27 @@
+.mode-selection-container{
+    background-color: darkblue;
+
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.mode-selection-container>label{
+    font-size: 4vw;
+}
+
+.button-container{
+    height: 10%;
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+}
+
+button{
+    height: 100%;
+    width: 45%;
+    font-size: 300%;
+}
