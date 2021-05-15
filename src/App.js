@@ -1,9 +1,22 @@
 import './App.css';
-import {useEffect, useState} from "react";
-// import getApiInfo from "./services/getApiInfo";
+
+
+//region import COMPONENTS
 import ExplanationCard from "./VIEWS/explanationCard";
 import ModeSelector from "./VIEWS/modeSelector";
 import SearchCard from "./VIEWS/searchCard";
+//endregion components
+
+//region import SERVICES
+
+import fetchByLocation from "./services/fetchByLocation";
+
+
+
+//endregion import services
+
+import {useEffect, useState} from "react";
+
 
 function App() {
 
@@ -48,6 +61,8 @@ function App() {
 
     //region SEARCH CARD ---------------
 
+
+    //region toggle search card
     useEffect(()=>{
 
         if(modeSelected) {
@@ -63,12 +78,14 @@ function App() {
 
 
     const [searchValue, SetSearchValue] = useState(null);
+    //endregion toggle search card
 
 
-    //Got search query from search card
+    //Get search query from search card
     useEffect(()=>{
         if(searchValue) {
             console.log(searchValue);
+            fetchByLocation(searchValue);
         }
 
     },[searchValue, searchCardToggle])
