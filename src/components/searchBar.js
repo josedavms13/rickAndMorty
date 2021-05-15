@@ -16,7 +16,6 @@ const SearchBar = ({SearchButtonHandle})=>{
         <div className={'search-bar'}>
 
 
-            <label htmlFor="search-input">Search for locations</label>
             <div className="input-button-container">
                 <input value={searchBarValue} type="text" name={'search-input'} onChange={(e)=>setSearchBarValue(e.target.value)}/>
                 <button onClick={()=> {

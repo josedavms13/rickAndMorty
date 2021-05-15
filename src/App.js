@@ -1,9 +1,9 @@
 import './App.css';
-// import SearchBar from "./components/searchBar";
 import {useEffect, useState} from "react";
 // import getApiInfo from "./services/getApiInfo";
 import ExplanationCard from "./VIEWS/explanationCard";
 import ModeSelector from "./VIEWS/modeSelector";
+import SearchCard from "./VIEWS/searchCard";
 
 function App() {
 
@@ -17,7 +17,7 @@ function App() {
     // region CHOOSE MODE
 
 
-    const [modeCardToggle, setModeCardToggle] = useState(false);
+    const [modeCardToggle, SetModeCardToggle] = useState(false);
     const [modeSelected , SetModeSelected] = useState(null)
 
 
@@ -25,7 +25,7 @@ function App() {
 
     useEffect(()=>{
         if(!explanationToggle){
-            setModeCardToggle(true);
+            SetModeCardToggle(true);
         }
     },[explanationToggle])
 
@@ -34,7 +34,7 @@ function App() {
         if(modeSelected)
         console.log(modeSelected)
 
-        setModeCardToggle(false);
+        SetModeCardToggle(false);
 
     },[modeSelected])
 
@@ -46,15 +46,33 @@ function App() {
 
 
 
-    //region SEARCHBAR ---------------
+    //region SEARCH CARD ---------------
+
+    useEffect(()=>{
+
+        if(modeSelected) {
+            console.log(modeSelected)
+
+            SetSearchCardToggle(true);
+        }
+
+
+    },[modeSelected])
+
+    const [searchCardToggle, SetSearchCardToggle] = useState(false);
+
+
     const [searchValue, setSearchValue] = useState('');
 
+
+    //Got search query from search card
     useEffect(()=>{
 
         console.log(searchValue);
 
     },[searchValue])
-    //endregion searchbar
+
+    //endregion search card
 
 
 
@@ -69,6 +87,8 @@ function App() {
         {modeCardToggle&&<ModeSelector setMode={(mode) => {
             SetModeSelected(mode)
         }}/>}
+
+        {searchCardToggle&&<SearchCard mode={modeSelected}/>}
 
     </div>
   );
