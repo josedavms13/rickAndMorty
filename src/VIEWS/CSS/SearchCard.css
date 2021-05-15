@@ -16,6 +16,8 @@
     align-items: center;
 
     color: white;
+
+    border-radius: 20%;
 }
 
 
@@ -29,6 +31,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    border-radius: 10%;
+
 }
 
 .name{

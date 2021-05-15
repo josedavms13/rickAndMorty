@@ -81,7 +81,7 @@ function App() {
 
   return (
     <div className="App">
-
+        <div className="bg"> </div>
         {explanationToggle && <ExplanationCard continueBtn={()=>setExplanationToggle(false)}/>}
 
         {modeCardToggle&&<ModeSelector setMode={(mode) => {

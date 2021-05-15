@@ -1,0 +1,9 @@
+.bg{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+
+    background-image: radial-gradient( circle farthest-corner at 16.5% 28.1%, rgb(7, 14, 26) 0%, rgba(0,112,218,1) 90% );
+
+    z-index: -1;
+}
