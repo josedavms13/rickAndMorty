@@ -6,7 +6,7 @@ import './App.css';
 import ExplanationCard from "./VIEWS/explanationCard";
 import ModeSelector from "./VIEWS/modeSelector";
 import SearchCard from "./VIEWS/searchCard";
-import ResidentsListCard from "./VIEWS/residentsListCard";
+import Mode1ResidentsCardList from "./VIEWS/Mode1ResidentsCardList";
 
 //endregion import views
 
@@ -170,7 +170,6 @@ function App() {
     //endregion receiving data from aux api
 
 
-
     //region RESIDENT LIST CARD
 
     //region toggle card
@@ -187,6 +186,7 @@ function App() {
 
 
     //endregion resident list card
+
 
     //region ERROR HANDLE
 
@@ -212,7 +212,7 @@ function App() {
                 SetSearchValue(searchedValue)
             }}/>}
 
-            {residentListCardToggle&&<ResidentsListCard data={residentsData}/>}
+            {residentListCardToggle&&<Mode1ResidentsCardList data={residentsData}/>}
 
         </div>
     );

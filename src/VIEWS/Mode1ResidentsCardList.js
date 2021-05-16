@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import ResidentListItem from "../components/residentListItem";
 
 
-const ResidentsListCard = ({data}) => {
+const Mode1ResidentsCardList = ({data}) => {
 
     const [cardToggle, SetCardToggle] = useState(false);
 
@@ -11,11 +11,7 @@ const ResidentsListCard = ({data}) => {
     const [dataToDisplay, SetDataToDisplay] = useState(null);
 
 
-    const [characterName, SetCharacterName] = useState(null)
-    const [characterSpecies, SetCharacterSpecies] = useState(null)
-    const [characterGender, SetCharacterGender] = useState(null)
-    const [characterStatus, SetCharacterStatus] = useState(null)
-    const [characterPicture, SetCharacterPicture] = useState(null)
+    //region Set the data available on the component
 
     useEffect(() => {
 
@@ -29,7 +25,9 @@ const ResidentsListCard = ({data}) => {
 
     }, [data])
 
+    //endregion set the data available on the component
 
+    //region Set the amount of cards to display
     function displayCards() {
         if (amountOfDataToDisplay === 0) {
             SetDataToDisplay(overallData);
@@ -61,6 +59,13 @@ const ResidentsListCard = ({data}) => {
 
     }, [dataToDisplay])
 
+    //endregion Set the amount of cards to display
+
+    //Reset the search
+
+    function reset(){
+        window.location.reload();
+    }
 
     return (
 
@@ -81,15 +86,15 @@ const ResidentsListCard = ({data}) => {
 
 
                 <div className="go-back-container">
-                    <button>Go Back</button>
+                    <button onClick={reset}>New Search!</button>
                 </div>
             </div>
 
             {cardToggle && <div className="cards-container">
 
                 {
-                    dataToDisplay.map((value)=>{
-                        return <ResidentListItem name={value.name} species={value.species} gender={value.gender} status={value.status} picture={value.image} key={value.name}/>
+                    dataToDisplay.map((value, index)=>{
+                        return <ResidentListItem name={value.name} species={value.species} gender={value.gender} status={value.status} picture={value.image} key={index}/>
                     })
                 }
             </div>
@@ -102,4 +107,4 @@ const ResidentsListCard = ({data}) => {
     )
 }
 
-export default ResidentsListCard
+export default Mode1ResidentsCardList
