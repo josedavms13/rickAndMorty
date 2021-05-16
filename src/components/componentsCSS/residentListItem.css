@@ -19,3 +19,8 @@
     background-color: yellow;
     width: 60%;
 }
+
+.image-container>img{
+    width: 100%;
+    height: 100%;
+}
