@@ -100,7 +100,7 @@ function App() {
             if (searchValue) {
 
 
-                fetchByName(searchValue);
+
             }
 
 
@@ -117,6 +117,8 @@ function App() {
     const [mode1Data, SetMode1Data] = useState(null);
 
     useEffect(() => {
+
+
 
     }, [mode1Data])
 
@@ -176,18 +178,6 @@ function App() {
     //endregion receiving data from api // -> mode get by location (2)
 
 
-    //region RECEIVING DATA FROM AUX API
-
-    const [auxData, SetAuxData] = useState(null)
-
-    useEffect(() => {
-        SetAuxData(auxDataApi)
-
-        // console.log(auxData)
-    }, [])
-
-
-    //endregion receiving data from aux api
 
 
     //region RESIDENT LIST CARD
