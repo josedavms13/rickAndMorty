@@ -13,7 +13,7 @@ import ResidentsListCard from "./VIEWS/residentsListCard";
 //region import SERVICES
 
 import fetchByLocation from "./services/fetchByLocation";
-
+import auxDataApi from "./services/AuxDataApi";
 
 //endregion import services
 
@@ -120,6 +120,21 @@ function App() {
 
 
     //endregion receiving data from api // -> mode get by location (2)
+
+
+    //region RECEIVING DATA FROM AUX API
+
+    const [auxData, SetAuxData] = useState(null)
+
+    useEffect(()=>{
+        SetAuxData(auxDataApi())
+
+        console.log(auxData)
+    },[])
+
+
+    //endregion receiving data from aux api
+
 
 
     //region RESIDENT LIST CARD
