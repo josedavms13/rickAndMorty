@@ -1,4 +1,5 @@
 import {useEffect} from "react";
+import ResidentListItem from "../components/residentListItem";
 
 
 const ResidentsListCard = (data)=>{
@@ -25,7 +26,7 @@ const ResidentsListCard = (data)=>{
         <div className={'resident-list-container'}>
 
 
-
+            <ResidentListItem />
         </div>
 
 

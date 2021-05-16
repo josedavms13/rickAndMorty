@@ -1,0 +1,21 @@
+.resident-list-item-container{
+
+    box-sizing: border-box;
+
+
+    background-color: red;
+
+    display: flex;
+}
+
+
+
+.image-container{
+    background-color: lime;
+    width: 40%;
+}
+
+.info-container{
+    background-color: yellow;
+    width: 60%;
+}
