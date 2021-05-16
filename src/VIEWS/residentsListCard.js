@@ -1,17 +1,14 @@
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import ResidentListItem from "../components/residentListItem";
 
 
-const ResidentsListCard = (data)=>{
+const ResidentsListCard = ({data})=>{
 
 
     useEffect(()=>{
-
-
-
-
-        console.log(data)
+        console.log(data);
     },[data])
+
 
 
 

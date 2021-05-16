@@ -13,6 +13,7 @@ import ResidentsListCard from "./VIEWS/residentsListCard";
 //region import SERVICES
 
 import fetchByLocation from "./services/fetchByLocation";
+import fetchResidentsById from "./services/fetchResidentsById";
 import auxDataApi from "./services/AuxDataApi";
 
 //endregion import services
@@ -85,7 +86,7 @@ function App() {
             console.log(searchValue);
 
             fetchByLocation(searchValue)
-                .then(data => SetMode2Data(data))
+                .then(data => SetMode2Data(data.results[0]))
                 .catch((error)=>console.log(error));
 
         }
@@ -98,18 +99,28 @@ function App() {
 
     //region RECEIVING DATA FROM API// -> MODE GET BY LOCATION (2)
 
+
+    //region getting info based on search input
     const [mode2Data, SetMode2Data] = useState(null);
 
+    const [residentsIds, SetResidentsId] = useState(null)
 
     useEffect(() => {
 
         if (mode2Data) {
 
-            console.log('mode2Data');
-            console.log(mode2Data);
+
+            let residentsIds = '';
+            mode2Data.residents.forEach((element)=>{
+                residentsIds+= ',' + (element.slice(42, element.length));
+            })
+
+            SetResidentsId(residentsIds);
 
 
-            SetResidentListCardToggle(true);
+
+
+
             SetSearchCardToggle(false);
 
 
@@ -117,6 +128,29 @@ function App() {
         }
 
     }, [mode2Data])
+
+    //endregion getting info based on search input
+
+
+    //region Fixing url issues
+
+    const [residentsData, SetResidentsData] = useState(null)
+    useEffect(()=>{
+
+        if(residentsIds){
+
+            fetchResidentsById(residentsIds)
+                .then(data=>SetResidentsData(data))
+
+
+
+            SetResidentListCardToggle(true);
+        }
+    },[residentsIds])
+
+
+    //endregion fixing url issues
+
 
 
     //endregion receiving data from api // -> mode get by location (2)
@@ -127,9 +161,9 @@ function App() {
     const [auxData, SetAuxData] = useState(null)
 
     useEffect(()=>{
-        SetAuxData(auxDataApi())
+        SetAuxData(auxDataApi)
 
-        console.log(auxData)
+        // console.log(auxData)
     },[])
 
 
@@ -178,7 +212,7 @@ function App() {
                 SetSearchValue(searchedValue)
             }}/>}
 
-            {residentListCardToggle&&<ResidentsListCard/>}
+            {residentListCardToggle&&<ResidentsListCard data={residentsData}/>}
 
         </div>
     );
