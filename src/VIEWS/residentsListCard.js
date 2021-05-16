@@ -2,12 +2,12 @@ import {useEffect, useState} from "react";
 import ResidentListItem from "../components/residentListItem";
 
 
-const ResidentsListCard = ({data})=>{
+const ResidentsListCard = ({data}) => {
 
     const [cardToggle, SetCardToggle] = useState(false);
 
     const [overallData, SetOverallData] = useState(null)
-    const [amountOfDataToDisplay, SetAmountOfDataToDisplay]= useState(0)
+    const [amountOfDataToDisplay, SetAmountOfDataToDisplay] = useState(0)
     const [dataToDisplay, SetDataToDisplay] = useState(null);
 
 
@@ -17,27 +17,24 @@ const ResidentsListCard = ({data})=>{
     const [characterStatus, SetCharacterStatus] = useState(null)
     const [characterPicture, SetCharacterPicture] = useState(null)
 
-    useEffect(()=>{
+    useEffect(() => {
 
         console.log(data);
 
-        if(data){
+        if (data) {
 
             SetOverallData(data);
         }
 
 
-    },[data])
+    }, [data])
 
 
-
-
-
-    function displayCards(){
-        if(amountOfDataToDisplay === 0){
+    function displayCards() {
+        if (amountOfDataToDisplay === 0) {
+            SetDataToDisplay(overallData);
             console.log('display all data')
-        }
-        else {
+        } else {
             const maxNumber = () => {
 
                 if (amountOfDataToDisplay > overallData.length) {
@@ -49,23 +46,23 @@ const ResidentsListCard = ({data})=>{
 
             }
 
-            console.log(maxNumber())
+            SetDataToDisplay(overallData.splice(0, maxNumber()))
+
         }
 
-        // SetCharacterName(overallData[0].name);
-        // SetCharacterSpecies(overallData[0].species);
-        // SetCharacterGender(overallData[0].gender);
-        // SetCharacterStatus(overallData[0].status);
-        // SetCharacterPicture(overallData[0].image);
+        SetCardToggle(true);
+
 
     }
 
 
+    useEffect(() => {
+        console.log(dataToDisplay);
+
+    }, [dataToDisplay])
 
 
-
-
-    return(
+    return (
 
 
         <div className={'resident-list-container'}>
@@ -87,11 +84,18 @@ const ResidentsListCard = ({data})=>{
                     <button>Go Back</button>
                 </div>
             </div>
-            {cardToggle&&<div className="cards-container">
 
-                <ResidentListItem name={characterName} species={characterSpecies} gender={characterGender}
-                                  status={characterStatus} picture={characterPicture}/>
-            </div>}
+            {cardToggle && <div className="cards-container">
+
+                {
+                    dataToDisplay.map((value)=>{
+                        return <ResidentListItem name={value.name} species={value.species} gender={value.gender} status={value.status} picture={value.image} key={value.name}/>
+                    })
+                }
+            </div>
+
+            }
+
         </div>
 
 
