@@ -120,7 +120,7 @@ function App() {
 
                         else{
 
-                            SetMode1Data(data.results.filter((item)=>item.name === Details))
+                            SetMode1Data((data.results.filter((item)=>item.name === Details))[0])
                         }
 
 
@@ -193,9 +193,11 @@ function App() {
 
         if(mode1Data){
 
+            console.log(mode1Data)
 
-            const fromAuxApi = AuxDataAPi
-            console.log(mode1Data);
+            const fromAuxApi = AuxDataAPi(mode1Data.name)
+
+            console.log(fromAuxApi);
         }
 
     }, [mode1Data])

@@ -1,5 +1,7 @@
 function AuxDataAPi(searchName) {
 
+    console.log(searchName)
+
     const auxDataApi = [
         {
             name: "Morty Smith",
@@ -3829,7 +3831,9 @@ function AuxDataAPi(searchName) {
         }
     ]
 
-    auxDataApi.filter((item)=>item.name === searchName)
+
+    return auxDataApi.filter((item)=> item.name === searchName)
+
 }
 
 export default AuxDataAPi
