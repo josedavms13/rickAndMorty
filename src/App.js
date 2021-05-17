@@ -26,14 +26,15 @@ import Mode1DisplayInfoCard from "./VIEWS/Mode1DisplayInfoCard";
 function App() {
 
     //region EXPLANATION CARD
-    const [isFirstTime, SetIsFirstTime] = useState(true)
+    const [isFirstTime, SetIsFirstTime] = useState(null)
     useEffect(() => {
 
-        console.log()
+        console.log('checked')
         if (sessionStorage.length > 0) {
             console.log('not first time')
             SetIsFirstTime(false);
         } else {
+            SetIsFirstTime(true);
             console.log('first time')
             sessionStorage.clear();
             sessionStorage.setItem('open', 'open');
@@ -42,16 +43,20 @@ function App() {
 
 
     useEffect(() => {
+
         console.log(isFirstTime);
 
-        if (!isFirstTime) {
+        if(isFirstTime !== null){
 
-            SetModeCardToggle(true);
+            if (!isFirstTime) {
+                console.log('changed')
+                SetModeCardToggle(true);
+                SetShowExplanationToggle(false);
 
-        }else{
-            SetShowExplanationToggle(true);
+            } else {
+                SetShowExplanationToggle(true);
+            }
         }
-
     }, [isFirstTime])
 
     const [explanationToggle, SetShowExplanationToggle] = useState(false)
@@ -69,13 +74,18 @@ function App() {
 
     // Open card after explanation
 
-    useEffect(() => {
-        if (!explanationToggle) {
-            SetModeCardToggle(false);
+    const [closedCard, CheckClosedCard] = useState(null)
 
-            console.log('show modeCardToggle ' + modeCardToggle)
+    useEffect(()=>{
+
+        console.log(closedCard)
+
+        if(closedCard!== null){
+            SetShowExplanationToggle(false);
+            SetModeCardToggle(true);
         }
-    }, [modeCardToggle])
+
+    },[closedCard])
 
 
     // Mode Selected
@@ -322,7 +332,7 @@ function App() {
     return (
         <div className="App">
             <div className="bg"></div>
-            {explanationToggle && <ExplanationCard continueBtn={() => SetShowExplanationToggle(false)}/>}
+            {explanationToggle && <ExplanationCard continueBtn={() => CheckClosedCard(false)}/>}
 
             {modeCardToggle && <ModeSelector setMode={(mode) => {
                 SetModeSelected(mode)
