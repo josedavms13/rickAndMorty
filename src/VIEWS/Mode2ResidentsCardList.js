@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import ResidentListItem from "../components/residentListItem";
 
 
-const Mode1ResidentsCardList = ({data}) => {
+const Mode2ResidentsCardList = ({data}) => {
 
     const [cardToggle, SetCardToggle] = useState(false);
 
@@ -107,4 +107,4 @@ const Mode1ResidentsCardList = ({data}) => {
     )
 }
 
-export default Mode1ResidentsCardList
+export default Mode2ResidentsCardList

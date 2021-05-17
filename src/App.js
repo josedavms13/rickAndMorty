@@ -6,7 +6,7 @@ import './App.css';
 import ExplanationCard from "./VIEWS/explanationCard";
 import ModeSelector from "./VIEWS/modeSelector";
 import SearchCard from "./VIEWS/searchCard";
-import Mode1ResidentsCardList from "./VIEWS/Mode1ResidentsCardList";
+import Mode2ResidentsCardList from "./VIEWS/Mode2ResidentsCardList";
 
 //endregion import views
 
@@ -20,6 +20,7 @@ import AuxDataAPi from "./services/AuxDataApi";
 //endregion import services
 
 import {useEffect, useState} from "react";
+import Mode1DisplayInfoCard from "./VIEWS/Mode1DisplayInfoCard";
 
 
 function App() {
@@ -195,9 +196,14 @@ function App() {
 
             console.log(mode1Data)
 
-            const fromAuxApi = AuxDataAPi(mode1Data.name)
+            const result = [AuxDataAPi(mode1Data.name), mode1Data]
 
-            console.log(fromAuxApi);
+            console.log(result);
+
+            SetCard1Data(result)
+            SetSearchCardToggle(false);
+            SetMode1CardToggle(true);
+
         }
 
     }, [mode1Data])
@@ -206,7 +212,17 @@ function App() {
     //endregion receiving data from api// --> mode get by name (mode1)
 
 
+    //region MODE1 CARDS
 
+const [mode1CardToggle, SetMode1CardToggle] = useState(false);
+
+const [card1Data, SetCard1Data] = useState(null)
+
+
+
+
+
+    //endregion mode1 cards
 
 
 
@@ -299,7 +315,10 @@ function App() {
                 SetSearchValue(searchedValue)
             }}/>}
 
-            {residentListCardToggle && <Mode1ResidentsCardList data={residentsData}/>}
+            {residentListCardToggle && <Mode2ResidentsCardList data={residentsData}/>}
+
+
+            {mode1CardToggle && <Mode1DisplayInfoCard data={card1Data}/>}
 
         </div>
     );
