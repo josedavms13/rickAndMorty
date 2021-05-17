@@ -15,7 +15,7 @@ import Mode1ResidentsCardList from "./VIEWS/Mode1ResidentsCardList";
 import fetchByLocation from "./services/fetchByLocation";
 import fetchResidentsById from "./services/fetchResidentsById";
 import fetchByName from "./services/fetchByName";
-import auxDataApi from "./services/AuxDataApi";
+import AuxDataAPi from "./services/AuxDataApi";
 
 //endregion import services
 
@@ -81,9 +81,9 @@ function App() {
     //endregion toggle search card
 
 
-    //region Set search query from search card
+    //region Set search query from search card DEPENDING ON MODE
     useEffect(() => {
-
+        //region BY LOCATION MODE --------------------------->>>
         if (modeSelected === 'search-by-location') {
             if (searchValue) {
                 console.log(searchValue);
@@ -95,18 +95,91 @@ function App() {
             }
         }
 
+        //endregion BY LOCATION MODE --------------------------->>>
+
+
+        //region BY NAME MODE --------------------------->>>
+
         if (modeSelected === 'search-by-name') {
 
             if (searchValue) {
 
+                const Query = splitUserInput(searchValue)[0];
 
+                const Details = splitUserInput(searchValue)[1];
+
+                console.log(Query, Details)
+
+                // FETCH!
+                fetchByName(Query)
+                    .then(data=>{
+
+                        if(Details === 0){
+                            SetMode1Data(data.results[Details]);
+                        }
+
+                        else{
+
+                            SetMode1Data(data.results.filter((item)=>item.name === Details))
+                        }
+
+
+                        }
+                    );
 
             }
 
 
         }
+        // Splits user inputs and return query and details for the search
+        function splitUserInput(data){
+
+            const splitInput = data.split(' ')
+
+            // More than 1 name
+            // Return [urlQuery, comparisonSample]
+            if(splitInput.length > 1){
+
+
+                let urlQuery =  splitInput[0];
+
+                let comparisonSample = (splitInput[0][0].toUpperCase()) + (splitInput[0].slice(1, splitInput[0].length));
+
+                for (let i = 1; i < splitInput.length; i++) {
+
+                    comparisonSample += ' ' + (splitInput[i][0].toUpperCase()) + (splitInput[i].slice(1, splitInput[i].length))
+                    urlQuery += '&'+ splitInput[i];
+                }
+
+                return [urlQuery, comparisonSample];
+
+            }
+
+                // Only 1 name
+            //return, [urlQuery, 0<index of first result>
+
+            else{
+                console.log('menos de 1')
+
+                const urlQuery = data;
+
+                return [urlQuery, 0]
+
+            }
+        }
+
+        //endregion BY NAME MODE --------------------------->>>
 
     }, [searchValue, searchCardToggle, modeSelected])
+
+
+
+
+
+
+
+
+
     //endregion set search query from search card
 
     //endregion search card
@@ -118,12 +191,22 @@ function App() {
 
     useEffect(() => {
 
+        if(mode1Data){
 
+
+            const fromAuxApi = AuxDataAPi
+            console.log(mode1Data);
+        }
 
     }, [mode1Data])
 
 
     //endregion receiving data from api// --> mode get by name (mode1)
+
+
+
+
+
 
     //region RECEIVING DATA FROM API// -> MODE GET BY LOCATION (MODE 2)
 
