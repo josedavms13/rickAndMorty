@@ -41,9 +41,9 @@ const SearchCard = ({mode, SearchButtonHandle})=>{
 
                 {locationModeExplanationToggle &&
                 <div className={'dimension-explaining-card'}>
-                    <h5>If you want to include dimension in your search, add -* and the name of dimension</h5>
-                    <p>Ex: Earth -* Replacement Dimension</p>
-                    <p>Ex2: Earth -* Dimension C-137</p>
+                    <h5>If you want to include dimension in your search, add *- and the name of dimension</h5>
+                    <p>Ex: Earth *- Replacement Dimension</p>
+                    <p>Ex2: Earth *- Dimension C-137</p>
                 </div>
                 }
 
