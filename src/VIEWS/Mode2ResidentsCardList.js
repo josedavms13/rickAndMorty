@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import ResidentListItem from "../components/residentListItem";
-
+import './ViewCSS/Mode2ResidentsCard.css'
 
 const Mode2ResidentsCardList = ({data}) => {
 

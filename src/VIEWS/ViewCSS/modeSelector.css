@@ -30,12 +30,17 @@
 }
 
 .button-container>button{
+    transition: all 0.3s ease;
     border-radius: 20px;
     height: 100%;
     width: 45%;
-    font-size: 250%;
+    font-size: 1.2vw;
     font-weight: bold;
 
+}
+.button-container>button:hover{
+    height: 110%;
+    width: 50%;
 }
 
 .search-by-name-btn{
@@ -65,5 +70,9 @@
 .search-by-location-text{
 
     color: #00a5ff;
+
+}
+
+@media(min-width: 2000px){
 
 }

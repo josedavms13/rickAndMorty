@@ -1,4 +1,4 @@
-import './ViewCSS/Mode1DisplayInfoCard.css'
+import './ViewCSS/mode1DisplayInfoCard.css'
 import {useEffect, useState} from "react";
 
 const Mode1DisplayInfoCard = ({data})=>{
@@ -114,25 +114,38 @@ function reset(){
 
     return(
 
-        <div className={'mode2-card-container'}>
-            <h1>{name}</h1>
-            <div className="character-details">
-                <ul>
-                    <li>Species: {species}</li>
-                    <li>Gender: {gender}</li>
-                    <li>Origin: {origin}</li>
-                </ul>
-            </div>
+        <div className={'mode1-card-container'}>
 
-            <div className="picture-container">
-                <img src={picture} alt=""/>
-            </div>
+            <div className="info-document">
+                <div className="header">
 
-            <div className="status-info">
-                <p>{deadMessage}</p>
-            </div>
+                    <h1>{name}</h1>
+                    <button onClick={reset}>New Search</button>
+                </div>
+                <div className="outheader">
 
-            <button onClick={reset}>New Search</button>
+                    <div className="picture-container">
+                        <img src={picture} alt=""/>
+
+                    </div>
+
+                    <div className="character-details">
+                        <ul>
+                            <li>Species: {species}</li>
+                            <li>Gender: {gender}</li>
+                            <li>Origin: {origin}</li>
+                        </ul>
+
+                        <div className="status-info">
+                            <p>{deadMessage}</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
         </div>
 
 

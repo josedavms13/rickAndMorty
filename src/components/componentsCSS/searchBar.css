@@ -29,6 +29,7 @@
 }
 
 .buttons-div{
+
     margin-top: 2%;
     width: 100%;
     height: 60%;
@@ -38,11 +39,17 @@
 }
 
 .buttons-div>button{
+    transition: all 0.4s ease;
     height: 7vh;
     width: 8vw;
     font-size: 1vw;
     margin: 5%;
     background-color: #1284c6;
-    border-radius: 20%;
+    border-radius: 30px;
 
+}
+
+.buttons-div>button:hover{
+
+    background-color: #03ffaf;
 }
