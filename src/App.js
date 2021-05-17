@@ -26,31 +26,37 @@ import Mode1DisplayInfoCard from "./VIEWS/Mode1DisplayInfoCard";
 function App() {
 
     //region EXPLANATION CARD
+    const [isFirstTime, SetIsFirstTime] = useState(true)
+    useEffect(() => {
+
+        console.log()
+        if (sessionStorage.length > 0) {
+            console.log('not first time')
+            SetIsFirstTime(false);
+        } else {
+            console.log('first time')
+            sessionStorage.clear();
+            sessionStorage.setItem('open', 'open');
+        }
+    }, [])
+
+
+    useEffect(() => {
+        console.log(isFirstTime);
+
+        if (!isFirstTime) {
+
+            SetModeCardToggle(true);
+
+        }else{
+            SetShowExplanationToggle(true);
+        }
+
+    }, [isFirstTime])
 
     const [explanationToggle, SetShowExplanationToggle] = useState(false)
 
-    useEffect(()=>{
 
-        const isStored = sessionStorage.getItem('opened');
-        console.log(isStored);
-        // NOT THE FIRST TIME
-        if(isStored=== 'opened'){
-            SetShowExplanationToggle(false);
-            SetModeCardToggle(true);
-
-            console.log('not the first time')
-        }
-
-        //THE FIRST TIME
-        else {
-            sessionStorage.setItem('opened', 'opened');
-            SetShowExplanationToggle(true);
-
-        }
-    },[])
-
-
-    
     //endregion explanation card
 
 
@@ -65,11 +71,12 @@ function App() {
 
     useEffect(() => {
         if (!explanationToggle) {
-            SetModeCardToggle(true);
+            SetModeCardToggle(false);
 
             console.log('show modeCardToggle ' + modeCardToggle)
         }
-    }, [explanationToggle, modeCardToggle])
+    }, [modeCardToggle])
+
 
     // Mode Selected
     useEffect(() => {
@@ -137,16 +144,14 @@ function App() {
 
                 // FETCH!
                 fetchByName(Query)
-                    .then(data=>{
+                    .then(data => {
 
-                        if(Details === 0){
-                            SetMode1Data(data.results[Details]);
-                        }
+                            if (Details === 0) {
+                                SetMode1Data(data.results[Details]);
+                            } else {
 
-                        else{
-
-                            SetMode1Data((data.results.filter((item)=>item.name === Details))[0])
-                        }
+                                SetMode1Data((data.results.filter((item) => item.name === Details))[0])
+                            }
 
 
                         }
@@ -156,24 +161,25 @@ function App() {
 
 
         }
+
         // Splits user inputs and return query and details for the search
-        function splitUserInput(data){
+        function splitUserInput(data) {
 
             const splitInput = data.split(' ')
 
             // More than 1 name
             // Return [urlQuery, comparisonSample]
-            if(splitInput.length > 1){
+            if (splitInput.length > 1) {
 
 
-                let urlQuery =  splitInput[0];
+                let urlQuery = splitInput[0];
 
                 let comparisonSample = (splitInput[0][0].toUpperCase()) + (splitInput[0].slice(1, splitInput[0].length));
 
                 for (let i = 1; i < splitInput.length; i++) {
 
                     comparisonSample += ' ' + (splitInput[i][0].toUpperCase()) + (splitInput[i].slice(1, splitInput[i].length))
-                    urlQuery += '&'+ splitInput[i];
+                    urlQuery += '&' + splitInput[i];
                 }
 
                 return [urlQuery, comparisonSample];
@@ -183,7 +189,7 @@ function App() {
                 // Only 1 name
             //return, [urlQuery, 0<index of first result>
 
-            else{
+            else {
                 console.log('menos de 1')
 
                 const urlQuery = data;
@@ -198,13 +204,6 @@ function App() {
     }, [searchValue, searchCardToggle, modeSelected])
 
 
-
-
-
-
-
-
-
     //endregion set search query from search card
 
     //endregion search card
@@ -216,7 +215,7 @@ function App() {
 
     useEffect(() => {
 
-        if(mode1Data){
+        if (mode1Data) {
 
             console.log(mode1Data)
 
@@ -238,16 +237,12 @@ function App() {
 
     //region MODE1 CARDS
 
-const [mode1CardToggle, SetMode1CardToggle] = useState(false);
+    const [mode1CardToggle, SetMode1CardToggle] = useState(false);
 
-const [card1Data, SetCard1Data] = useState(null)
-
-
-
+    const [card1Data, SetCard1Data] = useState(null)
 
 
     //endregion mode1 cards
-
 
 
     //region RECEIVING DATA FROM API// -> MODE GET BY LOCATION (MODE 2)
@@ -301,8 +296,6 @@ const [card1Data, SetCard1Data] = useState(null)
 
 
     //endregion receiving data from api // -> mode get by location (2)
-
-
 
 
     //region RESIDENT LIST CARD
