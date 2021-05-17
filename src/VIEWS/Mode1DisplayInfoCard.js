@@ -22,77 +22,71 @@ useEffect(()=>{
     SetPicture(data[1].image);
 
     SetDeadMessage(CreateMessage(data[0][0]))
+
 },[data])
 
 
 function CreateMessage(info){
 
-    const dieInfo = info.died;
+    if(info !== undefined) {
+        const dieInfo = info.died;
 
 
-    // if doesn't has died data
-    if(dieInfo === ''){
+        // if doesn't has died data
+        if (dieInfo === '') {
 
 
+            return ('As far as can read the future. This person will have long live!')
+        } else {
 
 
-        return ('As far as can read the future. This person will have long live!')
-    }
-
-    else{
+            const seasonOfDeath = Number(dieInfo[1]);
+            const chapterOfDeath = Number(dieInfo[3]);
 
 
-        const seasonOfDeath = Number(dieInfo[1]);
-        const chapterOfDeath = Number(dieInfo[3]);
+            //People who die on same Season
+
+            if (seasonOfDeath === 1) {
 
 
-        //People who die on same Season
+                //dead people
 
-        if(seasonOfDeath === 1){
+                switch (true) {
+                    case  chapterOfDeath < 3:
 
-
-            //dead people
-
-            switch (true){
-                case  chapterOfDeath< 3:
-
-                    return 'This is already dead'
+                        return 'This is already dead'
 
 
-                case chapterOfDeath === 3:
+                    case chapterOfDeath === 3:
 
-                    return `If you know it/he/she, you should say goodbye. Will die sooner than later`
+                        return `If you know it/he/she, you should say goodbye. Will die sooner than later`
 
 
-                case chapterOfDeath === 4 || chapterOfDeath ===5:
+                    case chapterOfDeath === 4 || chapterOfDeath === 5:
 
-                    return `Won't die today, but won't live much either...`
+                        return `Won't die today, but won't live much either...`
 
-                case chapterOfDeath > 5 && chapterOfDeath < 11:
+                    case chapterOfDeath > 5 && chapterOfDeath < 11:
 
-                    return `This will live longer than many... but death is scheduled`
+                        return `This will live longer than many... but death is scheduled`
 
-                default:
-                    return 'Have no idea'
+                    default:
+                        return 'Have no idea'
+                }
+
+
+            }
+
+            //People who will die after
+            else {
+                return `Will die for sure, but take it's time`
             }
 
 
-
-
-
         }
-
-        //People who will die after
-        else{
-            return `Will die for sure, but take it's time`
-        }
-
-
-
-
-
-
     }
+    else
+    {return `No info found`}
 
 }
 
