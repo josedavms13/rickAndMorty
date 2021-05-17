@@ -12,7 +12,6 @@ function fetchResidentsById(ids){
         .then(response => response.json())
 
 
-    console.log(url);
 
     return residentsPromise
 }

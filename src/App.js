@@ -26,16 +26,15 @@ import Mode1DisplayInfoCard from "./VIEWS/Mode1DisplayInfoCard";
 function App() {
 
     //region EXPLANATION CARD
+
+    // Set if is the first time the user opens the app
     const [isFirstTime, SetIsFirstTime] = useState(null)
     useEffect(() => {
 
-        console.log('checked')
         if (sessionStorage.length > 0) {
-            console.log('not first time')
             SetIsFirstTime(false);
         } else {
             SetIsFirstTime(true);
-            console.log('first time')
             sessionStorage.clear();
             sessionStorage.setItem('open', 'open');
         }
@@ -44,12 +43,10 @@ function App() {
 
     useEffect(() => {
 
-        console.log(isFirstTime);
 
         if(isFirstTime !== null){
 
             if (!isFirstTime) {
-                console.log('changed')
                 SetModeCardToggle(true);
                 SetShowExplanationToggle(false);
 
@@ -78,7 +75,6 @@ function App() {
 
     useEffect(()=>{
 
-        console.log(closedCard)
 
         if(closedCard!== null){
             SetShowExplanationToggle(false);
@@ -91,7 +87,6 @@ function App() {
     // Mode Selected
     useEffect(() => {
         if (modeSelected)
-            console.log(modeSelected)
 
         SetModeCardToggle(false);
 
@@ -108,7 +103,6 @@ function App() {
     useEffect(() => {
 
         if (modeSelected) {
-            console.log(modeSelected)
 
             SetSearchCardToggle(true);
         }
@@ -128,11 +122,9 @@ function App() {
         //region BY LOCATION MODE --------------------------->>>
         if (modeSelected === 'search-by-location') {
             if (searchValue) {
-                console.log(searchValue);
 
                 fetchByLocation(searchValue)
                     .then(data => SetMode2Data(data.results[0]))
-                    .catch((error) => console.log(error));
 
             }
         }
@@ -150,7 +142,6 @@ function App() {
 
                 const Details = splitUserInput(searchValue)[1];
 
-                console.log(Query, Details)
 
                 // FETCH!
                 fetchByName(Query)
@@ -200,7 +191,6 @@ function App() {
             //return, [urlQuery, 0<index of first result>
 
             else {
-                console.log('menos de 1')
 
                 const urlQuery = data;
 
@@ -227,11 +217,8 @@ function App() {
 
         if (mode1Data) {
 
-            console.log(mode1Data)
 
             const result = [AuxDataAPi(mode1Data.name), mode1Data]
-
-            console.log(result);
 
             SetCard1Data(result)
             SetSearchCardToggle(false);
@@ -319,14 +306,6 @@ function App() {
 
 
     //endregion resident list card
-
-
-    //region ERROR HANDLE
-
-    const [error, SetError] = useState(null);
-
-
-    //endregion error handle
 
 
     return (

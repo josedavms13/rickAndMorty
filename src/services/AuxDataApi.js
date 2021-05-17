@@ -1,6 +1,5 @@
 function AuxDataAPi(searchName) {
 
-    console.log(searchName)
 
     const auxDataApi = [
         {

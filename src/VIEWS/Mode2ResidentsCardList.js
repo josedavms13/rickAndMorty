@@ -15,7 +15,6 @@ const Mode2ResidentsCardList = ({data}) => {
 
     useEffect(() => {
 
-        console.log(data);
 
         if (data) {
 
@@ -31,7 +30,6 @@ const Mode2ResidentsCardList = ({data}) => {
     function displayCards() {
         if (amountOfDataToDisplay === 0) {
             SetDataToDisplay(overallData);
-            console.log('display all data')
         } else {
             const maxNumber = () => {
 
@@ -55,7 +53,6 @@ const Mode2ResidentsCardList = ({data}) => {
 
 
     useEffect(() => {
-        console.log(dataToDisplay);
 
     }, [dataToDisplay])
 

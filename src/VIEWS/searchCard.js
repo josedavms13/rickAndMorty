@@ -9,7 +9,6 @@ const SearchCard = ({mode, SearchButtonHandle})=>{
     const [locationModeExplanationToggle, SetLocationModeExplanationToggle] = useState(false);
 
     useEffect(()=>{
-        console.log(mode);
         if(mode === 'search-by-name'){
             SetModeText('name')
         }

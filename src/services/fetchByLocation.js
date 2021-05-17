@@ -14,7 +14,6 @@ function fetchByLocation(input) {
 
         if (dimension.includes('dimension')) {
 
-            console.log('includes dimension')
 
             dimension = dimension.replace('dimension', '').trim();
 
@@ -22,7 +21,6 @@ function fetchByLocation(input) {
         }
 
 
-        console.log('has dimension')
 
         url += `name=${location}&dimension=${dimension}`
 
@@ -36,7 +34,6 @@ function fetchByLocation(input) {
     } else {
 
         const location = input.trim();
-        console.log('hasnot dimension');
 
 
         url += `name=${location}`;

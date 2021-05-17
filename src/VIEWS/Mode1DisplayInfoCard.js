@@ -14,7 +14,6 @@ const Mode1DisplayInfoCard = ({data})=>{
 
 useEffect(()=>{
 
-    console.log(data[1].name)
 
     SetName(data[1].name);
     SetSpecies(data[1].species);
@@ -30,7 +29,6 @@ function CreateMessage(info){
 
     const dieInfo = info.died;
 
-    console.log(info)
 
     // if doesn't has died data
     if(dieInfo === ''){
@@ -38,7 +36,6 @@ function CreateMessage(info){
 
 
 
-        console.log('As far as can read the future. This person will live for a long.')
         return ('As far as can read the future. This person will have long live!')
     }
 
@@ -48,41 +45,35 @@ function CreateMessage(info){
         const seasonOfDeath = Number(dieInfo[1]);
         const chapterOfDeath = Number(dieInfo[3]);
 
-        console.log(seasonOfDeath);
-        console.log(chapterOfDeath);
-
 
         //People who die on same Season
 
         if(seasonOfDeath === 1){
 
-            console.log('died on this season')
 
             //dead people
 
             switch (true){
                 case  chapterOfDeath< 3:
-                    console.log('is dead');
 
                     return 'This is already dead'
 
 
                 case chapterOfDeath === 3:
-                    console.log('die this chapter');
 
                     return `If you know it/he/she, you should say goodbye. Will die sooner than later`
 
 
                 case chapterOfDeath === 4 || chapterOfDeath ===5:
 
-                    console.log('will die soon');
                     return `Won't die today, but won't live much either...`
 
                 case chapterOfDeath > 5 && chapterOfDeath < 11:
-                    console.log('die ther rest of the season');
 
                     return `This will live longer than many... but death is scheduled`
 
+                default:
+                    return 'Have no idea'
             }
 
 
@@ -96,7 +87,6 @@ function CreateMessage(info){
             return `Will die for sure, but take it's time`
         }
 
-        console.log(seasonOfDeath);
 
 
 
