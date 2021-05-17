@@ -26,9 +26,31 @@ import Mode1DisplayInfoCard from "./VIEWS/Mode1DisplayInfoCard";
 function App() {
 
     //region EXPLANATION CARD
-    const [explanationToggle, setExplanationToggle] = useState(true)
+
+    const [explanationToggle, SetShowExplanationToggle] = useState(false)
+
+    useEffect(()=>{
+
+        const isStored = sessionStorage.getItem('opened');
+        console.log(isStored);
+        // NOT THE FIRST TIME
+        if(isStored=== 'opened'){
+            SetShowExplanationToggle(false);
+            SetModeCardToggle(true);
+
+            console.log('not the first time')
+        }
+
+        //THE FIRST TIME
+        else {
+            sessionStorage.setItem('opened', 'opened');
+            SetShowExplanationToggle(true);
+
+        }
+    },[])
 
 
+    
     //endregion explanation card
 
 
@@ -44,8 +66,10 @@ function App() {
     useEffect(() => {
         if (!explanationToggle) {
             SetModeCardToggle(true);
+
+            console.log('show modeCardToggle ' + modeCardToggle)
         }
-    }, [explanationToggle])
+    }, [explanationToggle, modeCardToggle])
 
     // Mode Selected
     useEffect(() => {
@@ -305,7 +329,7 @@ const [card1Data, SetCard1Data] = useState(null)
     return (
         <div className="App">
             <div className="bg"></div>
-            {explanationToggle && <ExplanationCard continueBtn={() => setExplanationToggle(false)}/>}
+            {explanationToggle && <ExplanationCard continueBtn={() => SetShowExplanationToggle(false)}/>}
 
             {modeCardToggle && <ModeSelector setMode={(mode) => {
                 SetModeSelected(mode)

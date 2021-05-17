@@ -107,6 +107,9 @@ function CreateMessage(info){
 }
 
 
+function reset(){
+    window.location.reload();
+}
 
 
     return(
@@ -128,6 +131,8 @@ function CreateMessage(info){
             <div className="status-info">
                 <p>{deadMessage}</p>
             </div>
+
+            <button onClick={reset}>New Search</button>
         </div>
 
 

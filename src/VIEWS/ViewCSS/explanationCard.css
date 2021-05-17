@@ -2,28 +2,69 @@
 
 .explanation-card-container{
 
-    box-sizing: border-box;
-    background-color: red;
 
     position: absolute;
-    width: 70%;
-    height: 70%;
-    left: 15%;
-    top: 15%;
+    box-sizing: border-box;
+    background-color: #101649;
+
+    border-radius: 5%;
+
+    width: 90vw;
+    height: 90vh;
+
+    top: 5vh;
+    left: 5vw;
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 5% 10%;
+    justify-content: space-around;
+
 }
 
 .text-container{
     text-align: center;
-    font-size: 2vw;
+    font-size: 1.5vw;
+
+    height: 80%;
+
+    margin: 20%;
+
+    color: #3c90aa;
 }
 
-.explanation-card-container>button{
-    height: 5%;
+.text-container>button{
+
+    transition: all 1s ease;
+
+
+    margin-top: 5%;
+    height: 7%;
     width: 15%;
+
+    background-color: #3b58bf;
+    color: #7bd25f;
+
+
     font-size: 1vw;
+}
+
+.text-container>button:hover{
+    background-color: #23a596;
+    color: #061f1b;
+    font-weight: bold;
+}
+
+.disclaimer {
+    color: #67b7d0;
+    font-size: 1vw;
+    font-weight: lighter;
+    border: #3c90aa solid 1px;
+}
+.bold{
+    font-weight: bold;
+}
+
+.italics{
+    font-style: italic;
 }
