@@ -33,6 +33,10 @@
     color: #3c90aa;
 }
 
+.text-container>h2{
+    border-bottom: #3c90aa solid 2px;
+}
+
 .text-container>button{
 
     transition: all 1s ease;

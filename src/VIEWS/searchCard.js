@@ -16,10 +16,11 @@ const SearchCard = ({mode, SearchButtonHandle})=>{
 
         if(mode === 'search-by-location'){
             SetModeText('location')
-            // SetLocationModeExplanationToggle(true);
+            SetLocationModeExplanationToggle(true);
         }
 
     },[mode])
+
 
 
 
@@ -27,23 +28,32 @@ const SearchCard = ({mode, SearchButtonHandle})=>{
 
         <div className={`search-card-container ${modeText}`}>
 
-            <div className="color-adjuster">
+            <div className="color-adjuster"> </div>
+            <div className="search-card-block">
+
+                <h2>Search here!</h2>
+
+                <div className="main-card-form">
+
+                    <h4>Searching by {modeText}</h4>
+                    <SearchBar SearchButtonHandle={SearchButtonHandle}/>
+                </div>
+
+
                 {locationModeExplanationToggle &&
                 <div className={'dimension-explaining-card'}>
-                    <h5>If you want to include dimension searching type a -* and the name of dimension</h5>
+                    <h5>If you want to include dimension in your search, add -* and the name of dimension</h5>
                     <p>Ex: Earth -* Replacement Dimension</p>
                     <p>Ex2: Earth -* Dimension C-137</p>
                 </div>
                 }
+
+
+
+
             </div>
 
-            <h2>Make your search here!</h2>
-            <h4>Searching by {modeText}</h4>
-            <SearchBar SearchButtonHandle={SearchButtonHandle}/>
 
-
-
-            <button>Cancel</button>
 
 
         </div>

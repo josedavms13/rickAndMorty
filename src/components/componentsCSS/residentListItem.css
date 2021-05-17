@@ -2,22 +2,30 @@
 
     box-sizing: border-box;
 
+    margin: 1.5%;
 
-    background-color: red;
+    border: #3c90aa solid 5px;
 
     display: flex;
+
+
 }
 
 
 
 .image-container{
-    background-color: lime;
+    /*background-color: lime;*/
     width: 40%;
 }
 
 .info-container{
-    background-color: yellow;
+    box-sizing: border-box;
+    background-color: rgba(149, 149, 96, 0.6);
     width: 60%;
+    font-size: 1.2vw;
+    font-weight: bold;
+    padding: 5%;
+
 }
 
 .image-container>img{

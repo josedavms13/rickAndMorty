@@ -13,6 +13,11 @@ const SearchBar = ({SearchButtonHandle})=>{
         setSearchBarValue('');
     }
 
+    function reset(){
+
+        window.location.reload();
+    }
+
     return(
 
         <div className={'search-bar'}>
@@ -20,9 +25,13 @@ const SearchBar = ({SearchButtonHandle})=>{
 
             <div className="input-button-container">
                 <input value={searchBarValue} type="text" name={'search-input'} onChange={(e)=>setSearchBarValue(e.target.value)}/>
-                <button onClick={()=> {
-                    setOrResetInputValues()
-                }}>Search!</button>
+               <div className="buttons-div">
+
+                   <button onClick={()=> {
+                       setOrResetInputValues()
+                   }}>Search!</button>
+                   <button onClick={reset}>Cancel</button>
+               </div>
             </div>
 
 

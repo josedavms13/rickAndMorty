@@ -3,11 +3,11 @@
 
     position: absolute;
     /*background-color: darkgreen;*/
-    width: 50vw;
-    height: 50vh;
+    width: 80vw;
+    height: 80vh;
 
-    top: 25%;
-    left: 25%;
+    top: 10%;
+    left: 10%;
 
 
     display: flex;
@@ -15,25 +15,17 @@
     justify-content: center;
     align-items: center;
 
-    color: white;
 
-    border-radius: 20%;
 }
 
 
 .color-adjuster{
+    border: black solid 2px;
+    position: absolute;
     background: rgb(0,0,0);
-    background: radial-gradient(circle, rgba(0,0,0,0.39539565826330536) 0%, rgba(0,0,0,0.8491771708683473) 80%, rgba(0,0,0,1) 90%);
-    width: 100%;
-    height: 100%;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    border-radius: 10%;
-
+    background: radial-gradient(circle, rgba(21, 65, 78, 0.39) 0%, rgba(8, 10, 42, 0.85) 80%, rgba(58, 156, 148, 0.33) 90%);
+    width: 80vw;
+    height: 80vh;
 }
 
 .name{
@@ -52,13 +44,50 @@
 
 .dimension-explaining-card{
 
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.7);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    width: 100%;
+    width: 40%;
     height: 20%;
+    font-size: 1vw;
+    font-weight: bold;
+    color: white;
+    margin-top: 5%;
+    padding: 1%;
+}
+.search-card-block{
+    box-sizing: border-box;
+    position: absolute;
+    width: 80vw;
+    height: 80vh;
+    background-color: rgba(1, 81, 99, 0.88);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
 }
 
+.search-card-block>h2{
+
+    font-size: 3vw;
+    padding-bottom: 2%;
+
+}
+
+.main-card-form{
+    height: 30%;
+    width: 40%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-card-form>h4{
+    font-size: 2vw;
+}

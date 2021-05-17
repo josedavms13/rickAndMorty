@@ -1,18 +1,25 @@
 .mode-selection-container{
 
+    position: absolute;
+    top: 10vh;
+    left: 10vw;
     box-sizing: border-box;
-    background-color: darkblue;
+    background-color: rgba(76, 76, 76, 0.42);
 
-    width: 100vw;
-    height: 100vh;
+    padding-top: 10%;
+
+    width: 80vw;
+    height: 80vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+
+    color: #03ffaf;
 }
 
-.mode-selection-container>label{
-    font-size: 4vw;
+.mode-selection-container>h2{
+    font-size: 3vw;
+    border-bottom: #b9ffbb solid 1px;
 }
 
 .button-container{
@@ -23,7 +30,40 @@
 }
 
 .button-container>button{
+    border-radius: 20px;
     height: 100%;
     width: 45%;
-    font-size: 300%;
+    font-size: 250%;
+    font-weight: bold;
+
+}
+
+.search-by-name-btn{
+
+    background-color: #03ffaf;
+
+}
+
+.search-by-location-btn{
+    background-color: #00a5ff;
+}
+
+.choose-info{
+    margin-top: 5%;
+    font-size: 250%;
+    font-weight: bolder;
+
+    text-align: center;
+}
+
+.search-by-name-text{
+
+    color: #03ffaf;
+
+}
+
+.search-by-location-text{
+
+    color: #00a5ff;
+
 }

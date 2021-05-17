@@ -17,7 +17,7 @@ const ResidentListItem = ({name, species, gender, status, picture})=>{
                 <img src={picture} alt=""/>
             </div>
             <div className="info-container">
-                <h5>Name : {name}</h5>
+                <h1>Name : {name}</h1>
                 <p>Species : {species}</p>
                 <p>Gender: {gender}</p>
                 <h6>Status: {status}</h6>

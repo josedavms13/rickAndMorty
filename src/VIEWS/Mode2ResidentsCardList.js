@@ -77,6 +77,7 @@ const Mode2ResidentsCardList = ({data}) => {
                     <label>Set the number of items to display</label>
                     <p>If 0, it will display all results</p>
                 </div>
+
                 <div className="form">
                     <input type="number" min={0} defaultValue={0} onChange={(e) => {
                         SetAmountOfDataToDisplay(Number(e.target.value))
@@ -85,13 +86,13 @@ const Mode2ResidentsCardList = ({data}) => {
                 </div>
 
 
+
                 <div className="go-back-container">
                     <button onClick={reset}>New Search!</button>
                 </div>
             </div>
 
             {cardToggle && <div className="cards-container">
-
                 {
                     dataToDisplay.map((value, index)=>{
                         return <ResidentListItem name={value.name} species={value.species} gender={value.gender} status={value.status} picture={value.image} key={index}/>
