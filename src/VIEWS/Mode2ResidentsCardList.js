@@ -2,61 +2,50 @@ import {useEffect, useState} from "react";
 import ResidentListItem from "../components/residentListItem";
 import './ViewCSS/Mode2ResidentsCard.css'
 
-const Mode2ResidentsCardList = ({data}) => {
+const Mode2ResidentsCardList = ({urls}) => {
 
-    const [cardToggle, SetCardToggle] = useState(false);
-
-    const [overallData, SetOverallData] = useState(null)
-    const [amountOfDataToDisplay, SetAmountOfDataToDisplay] = useState(0)
-    const [dataToDisplay, SetDataToDisplay] = useState(null);
+const [cardToggle, SetCardToggle] = useState(null);
+const [amountOfDataToDisplay, SetAmountOfDataToDisplay] = useState(null);
 
 
-    //region Set the data available on the component
-
-    useEffect(() => {
+    useEffect(()=>{
 
 
-        if (data) {
-
-            SetOverallData(data);
-        }
+   },[urls])
 
 
-    }, [data])
+    function setAmountOfCards(){
 
-    //endregion set the data available on the component
-
-    //region Set the amount of cards to display
-    function displayCards() {
-        if (amountOfDataToDisplay === 0) {
-            SetDataToDisplay(overallData);
-        } else {
-            const maxNumber = () => {
-
-                if (amountOfDataToDisplay > overallData.length) {
-                    return overallData.length
-                } else {
-                    return amountOfDataToDisplay
-                }
+        if(amountOfDataToDisplay > 0){
 
 
-            }
+            const newArray = [...urls.residents];
 
-            SetDataToDisplay(overallData.splice(0, maxNumber()))
+            return newArray.slice(0, amountOfDataToDisplay);
 
         }
 
-        SetCardToggle(true);
+        else{
+            return [...urls.residents];
+        }
 
 
     }
 
 
-    useEffect(() => {
 
-    }, [dataToDisplay])
 
-    //endregion Set the amount of cards to display
+
+
+
+    function displayCards(){
+
+
+
+        SetCardToggle(true);
+
+
+    }
 
     //Reset the search
 
@@ -91,8 +80,8 @@ const Mode2ResidentsCardList = ({data}) => {
 
             {cardToggle && <div className="cards-container">
                 {
-                    dataToDisplay.map((value, index)=>{
-                        return <ResidentListItem name={value.name} species={value.species} gender={value.gender} status={value.status} picture={value.image} key={index}/>
+                    setAmountOfCards().map((url, index)=>{
+                       return <ResidentListItem url={url} key={index}/>
                     })
                 }
             </div>

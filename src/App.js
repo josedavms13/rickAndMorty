@@ -13,7 +13,6 @@ import Mode2ResidentsCardList from "./VIEWS/Mode2ResidentsCardList";
 //region import SERVICES
 
 import fetchByLocation from "./services/fetchByLocation";
-import fetchResidentsById from "./services/fetchResidentsById";
 import fetchByName from "./services/fetchByName";
 import AuxDataAPi from "./services/AuxDataApi";
 
@@ -169,7 +168,7 @@ function App() {
             const splitInput = data.split(' ')
 
             // More than 1 name
-            // Return [urlQuery, comparisonSample]
+            // This returns [urlQuery, comparisonSample]
             if (splitInput.length > 1) {
 
 
@@ -188,7 +187,7 @@ function App() {
             }
 
                 // Only 1 name
-            //return, [urlQuery, 0<index of first result>
+            // This returns [urlQuery, 0<index of first result>
 
             else {
 
@@ -208,7 +207,7 @@ function App() {
 
     //endregion search card
 
-    //region RECEIVING DATA FROM API// --> MODE GET BY NAME (MODE 1)
+    //region RECEIVING DATA FROM API --> MODE GET BY NAME (MODE 1)
 
 
     const [mode1Data, SetMode1Data] = useState(null);
@@ -229,7 +228,7 @@ function App() {
     }, [mode1Data])
 
 
-    //endregion receiving data from api// --> mode get by name (mode1)
+    //endregion receiving data from api --> mode get by name (mode1)
 
 
     //region MODE1 CARDS
@@ -242,25 +241,18 @@ function App() {
     //endregion mode1 cards
 
 
-    //region RECEIVING DATA FROM API// -> MODE GET BY LOCATION (MODE 2)
+    //region RECEIVING DATA FROM API -> MODE GET BY LOCATION (MODE 2)
 
 
     //region getting info based on search input
     const [mode2Data, SetMode2Data] = useState(null);
-
-    const [residentsIds, SetResidentsId] = useState(null)
+    const [mode2Urls, SetMode2Urls] = useState(null);
 
     useEffect(() => {
 
         if (mode2Data) {
 
-
-            let residentsIds = '';
-            mode2Data.residents.forEach((element) => {
-                residentsIds += ',' + (element.slice(42, element.length));
-            })
-
-            SetResidentsId(residentsIds);
+            SetMode2Urls(mode2Data)
 
 
             SetSearchCardToggle(false);
@@ -273,39 +265,8 @@ function App() {
     //endregion getting info based on search input
 
 
-    //region Fixing url issues
+    //endregion receiving data from api  -> mode get by location (2)
 
-    const [residentsData, SetResidentsData] = useState(null)
-    useEffect(() => {
-
-        if (residentsIds) {
-
-            fetchResidentsById(residentsIds)
-                .then(data => SetResidentsData(data))
-
-
-            SetResidentListCardToggle(true);
-        }
-    }, [residentsIds])
-
-
-    //endregion fixing url issues
-
-
-    //endregion receiving data from api // -> mode get by location (2)
-
-
-    //region RESIDENT LIST CARD
-
-    //region toggle card
-
-    const [residentListCardToggle, SetResidentListCardToggle] = useState(false);
-
-
-    //endregion toggle card
-
-
-    //endregion resident list card
 
 
     return (
@@ -321,7 +282,7 @@ function App() {
                 SetSearchValue(searchedValue)
             }}/>}
 
-            {residentListCardToggle && <Mode2ResidentsCardList data={residentsData}/>}
+            {mode2Urls && <Mode2ResidentsCardList urls={mode2Urls}/>}
 
 
             {mode1CardToggle && <Mode1DisplayInfoCard data={card1Data}/>}

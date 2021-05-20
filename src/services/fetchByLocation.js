@@ -1,4 +1,3 @@
-// let url = `https://rickandmortyapi.com/api/location/?dimension=unknown&name=citadel`
 
 
 function fetchByLocation(input) {
